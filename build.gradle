@@ -12,7 +12,7 @@ buildscript {
         classpath 'org.wisepersist:gwt-gradle-plugin:1.1.16'
         classpath 'org.gretty:gretty:3.0.7'
         classpath 'com.mobidevelop.robovm:robovm-gradle-plugin:2.3.19'
-        
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:6.18.0"
 
     }
 }
@@ -40,6 +40,27 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
         maven { url "https://jitpack.io" }
     }
+
+    apply plugin: "java-library"
+    apply plugin: "com.diffplug.spotless"
+
+	spotless {
+		// lineEndings 'UNIX'
+
+		java {
+			// target '**/*.java'
+			// removeUnusedImports()
+			// eclipse().configFile new File(rootProject.projectDir.absolutePath, 'eclipse-formatter.xml')
+
+            importOrder('java|javax', 'com.acme', '', '\\#com.acme', '\\#')
+            removeUnusedImports()
+            cleanthat()
+			eclipse().configFile new File(rootProject.projectDir.absolutePath, 'eclipse-formatter.xml')
+            // prettier()
+            formatAnnotations()
+            // licenseHeader '/* (C) $YEAR */'
+		}
+	}
 }
 
 project(":desktop") {
