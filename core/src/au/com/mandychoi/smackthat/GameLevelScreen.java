@@ -1,7 +1,6 @@
 package au.com.mandychoi.smackthat;
 
 import java.util.Iterator;
-
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -15,8 +14,11 @@ public class GameLevelScreen implements Screen {
     public static final int LEVEL_WIDTH = 800;
     public static final int LEVEL_HEIGHT = 480;
 
-    public GameLevelScreen(SmackThatShapeGame game) {
+    private RandomShapeFactory shapeFactory;
+
+    public GameLevelScreen(SmackThatShapeGame game, RandomShapeFactory shapeFactory) {
         this.game = game;
+        this.shapeFactory = shapeFactory;
         shapes = new Array<Shape>();
     }
 
@@ -45,7 +47,7 @@ public class GameLevelScreen implements Screen {
     }
 
     private void spawnShape() {
-        Shape shape = RandomShapeFactory.createShape();
+        Shape shape = shapeFactory.createShape();
         shapes.add(shape);
         lastSpawnTime = TimeUtils.nanoTime();
     }
