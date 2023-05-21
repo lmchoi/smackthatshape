@@ -1,0 +1,104 @@
+
+simple_shapes.png
+size: 2048, 2048
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+circle_filled
+  rotate: false
+  xy: 516, 1476
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+circle_outline
+  rotate: false
+  xy: 2, 962
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+heart_filled
+  rotate: false
+  xy: 962, 74
+  size: 512, 437
+  orig: 512, 437
+  offset: 0, 0
+  index: -1
+heart_outline
+  rotate: false
+  xy: 1476, 1053
+  size: 512, 437
+  orig: 512, 437
+  offset: 0, 0
+  index: -1
+hexagon_filled
+  rotate: false
+  xy: 1030, 978
+  size: 444, 512
+  orig: 444, 512
+  offset: 0, 0
+  index: -1
+hexagon_outline
+  rotate: false
+  xy: 516, 18
+  size: 444, 512
+  orig: 444, 512
+  offset: 0, 0
+  index: -1
+pentagon_filled
+  rotate: false
+  xy: 1544, 1525
+  size: 488, 463
+  orig: 488, 463
+  offset: 0, 0
+  index: -1
+pentagon_outline
+  rotate: false
+  xy: 1030, 513
+  size: 488, 463
+  orig: 488, 463
+  offset: 0, 0
+  index: -1
+square_filled
+  rotate: false
+  xy: 2, 1476
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+square_outline
+  rotate: false
+  xy: 2, 448
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+star_filled
+  rotate: false
+  xy: 1030, 1492
+  size: 512, 496
+  orig: 512, 496
+  offset: 0, 0
+  index: -1
+star_outline
+  rotate: false
+  xy: 516, 978
+  size: 512, 496
+  orig: 512, 496
+  offset: 0, 0
+  index: -1
+triangle_filled
+  rotate: false
+  xy: 2, 2
+  size: 512, 444
+  orig: 512, 444
+  offset: 0, 0
+  index: -1
+triangle_outline
+  rotate: false
+  xy: 516, 532
+  size: 512, 444
+  orig: 512, 444
+  offset: 0, 0
+  index: -1
