@@ -4,8 +4,6 @@ import java.util.Iterator;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -13,15 +11,14 @@ import com.badlogic.gdx.utils.TimeUtils;
 public class GameLevelScreen implements Screen {
     private final SmackThatShapeGame game;
 
-    private Array<Rectangle> shapes;
+    private Array<Shape> shapes;
     private long lastSpawnTime;
-    private final int shapeSize = 64;
-    private final int levelWidth = 800;
-    private final int levelHeight = 480;
+    public static final int LEVEL_WIDTH = 800;
+    public static final int LEVEL_HEIGHT = 480;
 
     public GameLevelScreen(SmackThatShapeGame game) {
         this.game = game;
-        shapes = new Array<Rectangle>();
+        shapes = new Array<Shape>();
     }
 
     @Override
@@ -39,21 +36,17 @@ public class GameLevelScreen implements Screen {
         if (TimeUtils.nanoTime() - lastSpawnTime > 1000000000)
             spawnShape();
 
-        Iterator<Rectangle> iter = shapes.iterator();
+        Iterator<Shape> iter = shapes.iterator();
         while (iter.hasNext()) {
-            Rectangle raindrop = iter.next();
-            raindrop.y -= 200 * Gdx.graphics.getDeltaTime();
-            if (raindrop.y + shapeSize < 0)
+            Shape shape = iter.next();
+            shape.drop(200 * Gdx.graphics.getDeltaTime());
+            if (shape.isOutOfBounds())
                 iter.remove();
         }
     }
 
     private void spawnShape() {
-        Rectangle shape = new Rectangle();
-        shape.x = MathUtils.random(0, levelWidth - shapeSize);
-        shape.y = levelHeight;
-        shape.width = shapeSize;
-        shape.height = shapeSize;
+        Shape shape = new Shape();
         shapes.add(shape);
         lastSpawnTime = TimeUtils.nanoTime();
     }
@@ -62,8 +55,8 @@ public class GameLevelScreen implements Screen {
         // draw
         ScreenUtils.clear(0, 0, 0, 1);
         game.beginRendering();
-        for (Rectangle shape : shapes) {
-            game.draw(shape.x, shape.y);
+        for (Shape shape : shapes) {
+            shape.draw(game);
         }
         game.endRendering();
     }
