@@ -45,7 +45,7 @@ public class GameLevelScreen implements Screen {
     }
 
     private void spawnShape() {
-        Shape shape = new Shape();
+        Shape shape = RandomShapeFactory.createShape();
         shapes.add(shape);
         lastSpawnTime = TimeUtils.nanoTime();
     }
