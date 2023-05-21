@@ -25,7 +25,11 @@ public class Shape {
         height = SHAPE_SIZE;
     }
 
-    public void drop(float distance) {
+    public void upate() {
+        drop(200 * Gdx.graphics.getDeltaTime());
+    }
+
+    private void drop(float distance) {
         y -= distance;
     }
 

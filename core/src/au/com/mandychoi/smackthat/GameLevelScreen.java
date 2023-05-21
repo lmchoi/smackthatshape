@@ -2,7 +2,6 @@ package au.com.mandychoi.smackthat;
 
 import java.util.Iterator;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -39,7 +38,7 @@ public class GameLevelScreen implements Screen {
         Iterator<Shape> iter = shapes.iterator();
         while (iter.hasNext()) {
             Shape shape = iter.next();
-            shape.drop(200 * Gdx.graphics.getDeltaTime());
+            shape.upate();
             if (shape.isOutOfBounds())
                 iter.remove();
         }
