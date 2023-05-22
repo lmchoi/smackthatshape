@@ -2,6 +2,7 @@ package au.com.mandychoi.smackthat;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -9,11 +10,15 @@ import com.badlogic.gdx.math.Matrix4;
 
 public class SmackThatShapeGame extends Game {
     private SpriteBatch batch;
+    private BitmapFont font;
+
     private TextureAtlas atlas;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
+        font = new BitmapFont();
+
         // assetManager = new AssetManager();
         // assetManager.load("simple_shapes.atlas", TextureAtlas.class);
         // assetManager.update(); // true if everything has been loaded
@@ -31,6 +36,7 @@ public class SmackThatShapeGame extends Game {
     @Override
     public void dispose() {
         batch.dispose();
+        font.dispose();
         atlas.dispose();
     }
 
@@ -48,5 +54,9 @@ public class SmackThatShapeGame extends Game {
 
     public void draw(Sprite sprite) {
         sprite.draw(batch);
+    }
+
+    public void drawText(String text, int x, int y) {
+        font.draw(batch, text, x, y);
     }
 }

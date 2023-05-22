@@ -20,6 +20,7 @@ public class GameLevelScreen implements Screen {
     public static final int LEVEL_HEIGHT = 480;
 
     private RandomShapeFactory shapeFactory;
+    private int score;
 
     public GameLevelScreen(SmackThatShapeGame game, RandomShapeFactory shapeFactory) {
         this.game = game;
@@ -61,6 +62,7 @@ public class GameLevelScreen implements Screen {
             
             if (touchPos != null && shape.isHit(touchPos)) {
                 iter.remove();
+                score++;
             } else {
                 shape.upate();
                 if (shape.isOutOfBounds())
@@ -82,6 +84,8 @@ public class GameLevelScreen implements Screen {
         for (Shape shape : shapes) {
             shape.draw(game);
         }
+
+        game.drawText("Score: " + score, 0, 480);
         game.endRendering();
     }
 
