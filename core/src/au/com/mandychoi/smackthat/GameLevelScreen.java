@@ -1,8 +1,10 @@
 package au.com.mandychoi.smackthat;
 
 import java.util.Iterator;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -10,6 +12,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 public class GameLevelScreen implements Screen {
     private final SmackThatShapeGame game;
     private OrthographicCamera camera;
+    private Vector3 touchPos = new Vector3();
 
     private Array<Shape> shapes;
     private long lastSpawnTime;
@@ -36,8 +39,16 @@ public class GameLevelScreen implements Screen {
         camera.update();
         game.setupProjection(camera.combined);
 
+        processInputs();
         update();
         draw();
+    }
+
+    private void processInputs() {
+        if (Gdx.input.isTouched()) {
+            touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+            camera.unproject(touchPos);
+        }
     }
 
     private void update() {
@@ -47,9 +58,14 @@ public class GameLevelScreen implements Screen {
         Iterator<Shape> iter = shapes.iterator();
         while (iter.hasNext()) {
             Shape shape = iter.next();
-            shape.upate();
-            if (shape.isOutOfBounds())
+            
+            if (touchPos != null && shape.isHit(touchPos)) {
                 iter.remove();
+            } else {
+                shape.upate();
+                if (shape.isOutOfBounds())
+                    iter.remove();
+            }
         }
     }
 

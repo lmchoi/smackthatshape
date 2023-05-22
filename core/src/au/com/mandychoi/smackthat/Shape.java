@@ -3,6 +3,7 @@ package au.com.mandychoi.smackthat;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector3;
 
 public class Shape {
 
@@ -40,5 +41,10 @@ public class Shape {
         sprite.setColor(color);
         sprite.setSize(width, height);
         game.draw(sprite);
+    }
+
+    public boolean isHit(Vector3 touchPos) {
+        // Make this more accurate
+        return (touchPos.dst(x, y, 0) < width);
     }
 }
