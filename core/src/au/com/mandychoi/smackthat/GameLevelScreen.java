@@ -2,12 +2,14 @@ package au.com.mandychoi.smackthat;
 
 import java.util.Iterator;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 
 public class GameLevelScreen implements Screen {
     private final SmackThatShapeGame game;
+    private OrthographicCamera camera;
 
     private Array<Shape> shapes;
     private long lastSpawnTime;
@@ -20,6 +22,9 @@ public class GameLevelScreen implements Screen {
         this.game = game;
         this.shapeFactory = shapeFactory;
         shapes = new Array<Shape>();
+
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, 800, 480);
     }
 
     @Override
@@ -27,7 +32,9 @@ public class GameLevelScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        // process input
+        // setup the camera
+        camera.update();
+        game.setupProjection(camera.combined);
 
         update();
         draw();

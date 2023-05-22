@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Matrix4;
 
 public class SmackThatShapeGame extends Game {
     private SpriteBatch batch;
@@ -31,6 +32,10 @@ public class SmackThatShapeGame extends Game {
     public void dispose() {
         batch.dispose();
         atlas.dispose();
+    }
+
+    public void setupProjection(Matrix4 cameraCombined) {
+        batch.setProjectionMatrix(cameraCombined);
     }
 
     public void beginRendering() {
