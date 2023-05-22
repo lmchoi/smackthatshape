@@ -30,6 +30,7 @@ public class SmackThatShapeGame extends Game {
     @Override
     public void dispose() {
         batch.dispose();
+        atlas.dispose();
     }
 
     public void beginRendering() {
@@ -42,6 +43,5 @@ public class SmackThatShapeGame extends Game {
 
     public void draw(Sprite sprite) {
         sprite.draw(batch);
-        atlas.dispose();
     }
 }
