@@ -60,7 +60,7 @@ public class GameLevelScreen implements Screen {
         while (iter.hasNext()) {
             Shape shape = iter.next();
             
-            if (touchPos != null && shape.isHit(touchPos)) {
+            if (shape.isHit(touchPos)) {
                 iter.remove();
                 score++;
             } else {

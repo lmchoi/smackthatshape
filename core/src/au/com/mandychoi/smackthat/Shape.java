@@ -45,6 +45,6 @@ public class Shape {
 
     public boolean isHit(Vector3 touchPos) {
         // Make this more accurate
-        return (touchPos.dst(x, y, 0) < width);
+        return touchPos != null && (touchPos.dst(x, y, 0) < width);
     }
 }
