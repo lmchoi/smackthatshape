@@ -79,7 +79,7 @@ public class GameLevelScreen implements Screen {
 
     private void draw() {
         // draw
-        ScreenUtils.clear(0, 0, 0, 1);
+        ScreenUtils.clear(ColourScheme.BACKGROUND_COLOUR);
         game.beginRendering();
         for (Shape shape : shapes) {
             shape.draw(game);

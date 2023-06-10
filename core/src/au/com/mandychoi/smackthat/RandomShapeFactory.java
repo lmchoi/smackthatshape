@@ -17,7 +17,7 @@ public class RandomShapeFactory {
         Sprite triangle = atlas.createSprite("triangle_filled");
         Sprite square = atlas.createSprite("square_filled");
         sprites = Array.with(circle, triangle, square);
-        colours = Array.with(Color.RED, Color.BLUE, Color.GREEN);
+        colours = Array.with(ColourScheme.SHAPE_RED, ColourScheme.SHAPE_BLUE, ColourScheme.SHAPE_GREEN);
     }
 
     public Shape createShape() {
